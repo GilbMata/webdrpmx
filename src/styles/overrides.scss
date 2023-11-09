@@ -1,0 +1,19 @@
+.VueCarousel-dot{
+    border-radius: 36px!important;
+    width: 32px!important;
+    height: 8px!important;
+}
+
+.hero-carousel .VueCarousel-pagination{
+    position: absolute;
+    bottom: 2em;
+}
+
+.hero-carousel .VueCarousel-inner{
+    height: 600px!important;
+}
+
+.plyr{
+    margin: auto;
+    width: var(--max-width);
+}
