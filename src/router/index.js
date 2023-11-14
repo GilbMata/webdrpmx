@@ -17,7 +17,8 @@ import SlaPage from '../components/legal/SlaPage'
 import TermsPage from '../components/legal/TermsPage'
 import UapPage from '../components/legal/UapPage'
 
-import PricingPage from '../views/PrincingPage.vue'
+import PricingBaas from '../views/PrincingBaas.vue'
+import PricingDraas from '../views/PrincingDraas.vue'
 
 Vue.use(VueRouter)
 
@@ -81,9 +82,14 @@ const routes = [
     component: AgreementPage
   },
   {
-    path: '/pricing',
-    name: 'pricing',
-    component: PricingPage
+    path: '/pricingb',
+    name: 'pricingBaas',
+    component: PricingBaas
+  },
+  {
+    path: '/pricingd',
+    name: 'pricingDraas',
+    component: PricingDraas
   },
   // 404
   { 
