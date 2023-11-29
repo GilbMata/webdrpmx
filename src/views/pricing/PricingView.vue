@@ -1,21 +1,6 @@
 <template>
     <div v-if="currentService" :key="serviceName">
-        <section id="section-overview" class="icon-bg" :style="{ backgroundImage: `url(${currentService.heroImage})` }">
-            <div class="row">
-                <div class="col-6 text-light">
-                    <h1 class="text-heavy text-display-3 mb-auto text-untransformed">
-                        {{ currentService.abbr }}
-                    </h1>
-                    <h1 class="d-block text-capitalized">
-                        {{ currentService.name }}
-                    </h1>
-                    <p class="mb-auto description mb-3 text-secondary pr-1">
-                        {{ currentService.sub }}
-                    </p>
-                </div>
-                <div class="col-6"></div>
-            </div>
-        </section>
+        
         <div class="bg-light">
             <div class="sticky-menu" ref="stickyMenu">
                 <a class="option" href="#section-what-it-is" :class="{ active: activeSubSection == '#section-what-it-is' }">
@@ -34,13 +19,13 @@
                     :class="{ active: activeSubSection == '#section-architecture' }">
                     {{ serviceArchitecture.title }}
                 </a>
-                <!-- <a class="option" href="#section-pricing" :class="{ active: activeSubSection == '#section-pricing' }">
+                <a class="option" href="#section-pricing" :class="{ active: activeSubSection == '#section-pricing' }">
                     {{ content[appLang].pricing.title }}
-                </a> -->
+                </a>
             </div>
             <div class="sections">
                 <section id="section-what-it-is" class="bg-light">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-6 text-center">
                             <img :src="currentService.icon" class="icon-xxl d-block m-auto">
                             <h1 class="text-secondary mt-auto mb-auto font-body text-untransformed text-display-4">
@@ -56,100 +41,23 @@
                             </p>
                         </div>
                     </div>
-                    <img src="@/assets/img/misc/balls_bottom_left.jpg" class="left-balls">
+                    <img src="@/assets/img/misc/balls_bottom_left.jpg" class="left-balls"> -->
                 </section>
                 <section id="section-benefits" class="bg-light pb-4">
-                    <img src="@/assets/img/misc/balls_bottom_right.jpg" class="right-balls">
-                    <div class="row">
-                        <h1 class="text-display-5 text-center">
-                            {{ currentService.content.benefits.title }}
-                        </h1>
-                    </div>
-                    <div class="row text-center flex-centered">
-                        <div class="col-6" v-for="benefit in serviceBenefits" :key="benefit.name">
-                            <img :src="benefit.image" :alt="benefit.name" class="icon-xl">
-                            <p class="text-semi-heavy text-upper px-2">
-                                {{ benefit.name }}
-                            </p>
-                        </div>
-                    </div>
+                   
                 </section>
                 <section id="section-free-trial" class="bg-secondary">
-                    <div class="row">
-                        <div class="col-8 text-light">
-                            <p class="text-display-5 text-center m-auto text-semi-heavy">
-                                {{ currentService.content.freeTrial.start }}
-                            </p>
-                            <ul class="text-dark">
-                                <li v-for="pro in currentService.content.freeTrial.pros" :key="pro">
-                                    {{ pro }}
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-4 d-flex pt-3">
-                            <router-link tag="button" to="/contact" class="bg-primary text-light d-block m-auto">
-                                {{ currentService.content.freeTrial.start }}
-                            </router-link>
-                        </div>
-                    </div>
+                    
                 </section>
                 <section id="section-features" class="bg-light p-relative">
-                    <div class="white-shadow"></div>
-                    <div class="icon-bg selected-benefit-image" :style="{ backgroundImage: `url(${selectedFeature.image})` }">
-                    </div>
-                    <div class="row">
-                        <h1 class="text-display-5 text-center">
-                            {{ currentService.content.features.title }}
-                        </h1>
-                    </div>
-                    <div class="row">
-                        <div class="col-5">
-                            <ul class="feature-list list-unstyled">
-                                <li v-for="feature in serviceFeatures" :key="feature.id"
-                                    :class="{ selected: feature.selected }" class="text-truncated" :title="feature.name"
-                                    @click="selectFeature(feature)">
-                                    {{ feature.name }}
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-7 feature-showcase p-relative">
-                            <p class="text-justify">
-                                {{ selectedFeature.description }}
-                            </p>
-                        </div>
-                    </div>
+                   
                 </section>
                 <section id="section-architecture">
-                    <div class="row">
-                        <h1 class="text-display-5 text-center">
-                            {{ serviceArchitecture.title }}
-                        </h1>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <img class="d-block m-auto" :src="serviceArchitecture.diagram" :alt="serviceName">
-                        </div>
-                    </div>
-                    <div class="mt-3 pt-3 row text-center pb-4" hidden>
-                        <div class="col-3 architecture-step" v-for="(step, idx) in serviceArchitectureSteps" :key="step.id">
-                            <img :src="step.image" :alt="step.name" class="m-auto icon-xl">
-                            <h4 class="d-flex">
-                                <span>
-                                    {{ idx + 1 }}
-                                </span>
-                                <span class="text-primary">
-                                    {{ step.name }}
-                                </span>
-                            </h4>
-                            <small>
-                                {{ step.description }}
-                            </small>
-                        </div>
-                    </div>
+                    
                 </section>
-                <!-- <section id="section-pricing">
+                <section id="section-pricing">
                     <component v-bind:is="currentServicePricing" class="tab"></component>
-                </section> -->
+                </section>
             </div>
         </div>
         <div class="back-to-services">
@@ -165,16 +73,14 @@
 
 <script>
 import notFoundView from '@/views/NotFoundView'
-// import PricingCbaas from "@/views/PrincingCbaas.vue";
-// import PricingCdraas from "@/views/PrincingCdraas.vue";
-// import PricingCiaas from "@/views/pricing/PricingCiaas.vue";
+import PricingCbaas from "@/views/PrincingCbaas.vue";
+import PricingCdraas from "@/views/PrincingCdraas.vue";
 
 export default {
     components: {
         notFoundView,
-        // PricingCbaas,
-        // PricingCdraas,
-        // PricingCiaas
+        PricingCbaas,
+        PricingCdraas,
     },
     mounted() {
         window.addEventListener('scroll', this.setupScrollingEvents, false)
@@ -217,7 +123,6 @@ export default {
             return this.serviceArchitecture.steps || []
         },
         currentServicePricing() {
-            console.log("🚀 ~ currentServicePricing ~ this.serviceName:", this.serviceName)
             return "PricingC" + this.serviceName
         }
     },
@@ -240,10 +145,7 @@ export default {
             else
                 this.activeSubSection = location.hash
 
-            setTimeout(() => {
-                this.subSections = document.querySelectorAll('.sections > section')
-                this.topHeight = this.$refs.stickyMenu.clientHeight + document.querySelector('nav').clientHeight
-            }, 300)
+        
         },
         selectFeature(feature) {
             this.serviceFeatures.forEach(ft => ft.selected = false)
@@ -490,4 +392,5 @@ export default {
     .selected-benefit-image {
         display: none;
     }
-}</style>
+}
+</style>

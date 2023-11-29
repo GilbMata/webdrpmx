@@ -200,7 +200,7 @@
             <p></p>
 
             <ol style="list-style-type:lower-alpha;">
-                <li value="2">Post-Rescisi&oacute;n. A menos que cancelemos su uso de las Ofertas de Servicios de conformidad con la Secci&oacute;n 7.2 (b), durante los 30 d&iacute;as posteriores a la Fecha de terminaci&oacute;n:</li>
+                <li value="2">Post-Rescisi&oacute;n. A menos que cancelemos su uso de las Ofertas de Servicios de conformidad con la Secci&oacute;n 7.2 (b), durante los 15 d&iacute;as posteriores a la Fecha de terminaci&oacute;n:</li>
             </ol>
 
             <p></p>

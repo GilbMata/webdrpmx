@@ -157,7 +157,7 @@ export default {
   margin-bottom: 5rem;
 
   .baas {
-    
+    text-align: justify;
   position: -webkit-sticky;
   position: sticky;    
   top: 100px;
@@ -194,6 +194,7 @@ export default {
     // width: 50%;
     flex-direction: column;
     align-items: center;
+    flex: 1 0 50%;
 
     .ptitulo {
       width: 100%;
@@ -394,6 +395,16 @@ export default {
 
   .range__field {
     border: 0;
+  }
+}
+
+@media screen and (width <=850px) {
+  .baas {
+    position: static !important;
+  }
+
+  .last {
+    flex-direction: column;
   }
 }
 </style>

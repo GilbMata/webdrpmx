@@ -101,6 +101,9 @@ export default {
         services(){
             return this.content[this.appLang].home.services
         },
+        pricing() {
+            return this.content[this.appLang].home.pricing
+        },
         partners(){
             return this.content[this.appLang].home.partners
         },
@@ -141,6 +144,12 @@ export default {
                     path: '/',
                     external: true,
                     options: this.partners,
+                },
+                {
+                    name: this.content[this.appLang].topNav.price,
+                    path: '/',
+                    external: false,
+                    options: this.pricing
                 }
             ]
         }
@@ -234,6 +243,7 @@ li > button{
 }
 .nav-mobile.open{
     transform: translate3d(0,0,0);
+    overflow: auto;
 }
 .nav-mobile-overlay{
     display: none;

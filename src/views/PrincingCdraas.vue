@@ -25,7 +25,7 @@
       </div>
       <div class="psliders">
         <!-- <div class="first"> -->
-        <fieldset class="range__field">
+        <!-- <fieldset class="range__field">
           <div style="display: flex; ">
             <label>Select total of CPU:</label>
             <span style="margin-left: 1rem;font-weight: 500;">{{ cpu }} cores</span>
@@ -34,6 +34,7 @@
           <svg role="presentation" width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
             <rect class="range__tick" x="1%" y="3" width="1" height="10"></rect>
             <rect class="range__tick" x="23%" y="3" width="1" height="10"></rect>
+
             <rect class="range__tick" x="55.5%" y="3" width="1" height="10"></rect>
             <rect class="range__tick" x="99%" y="3" width="1" height="10"></rect>
           </svg>
@@ -43,9 +44,9 @@
             <text class="range__point" x="55.5%" y="14" text-anchor="middle">6</text>
             <text class="range__point" x="99%" y="14" text-anchor="end">10</text>
           </svg>
-        </fieldset>
+        </fieldset> -->
 
-        <fieldset class="range__field">
+        <!-- <fieldset class="range__field">
           <div style="display: flex; ">
             <label>Select total RAM:</label>
             <span style="margin-left: 1rem;font-weight: 500;">{{ ram }} GB</span>
@@ -65,12 +66,12 @@
             <text class="range__point" x="24%" y="14" text-anchor="middle">64</text>
             <text class="range__point" x="99%" y="14" text-anchor="end">128</text>
           </svg>
-        </fieldset>
+        </fieldset> -->
         <!-- </div> -->
 
         <fieldset class="range__field">
           <div style="display: flex; ">
-            <label>Select total terabytes to backup: </label>
+            <label>Select total terabytes DRaaS NvME Storage: </label>
             <span style="margin-left: 1rem;font-weight: 500;">{{ terabytes }} TB</span>
           </div>
           <input class="range" type="range" min="1" max="30" value="1" v-model="terabytes" label="jjj">
@@ -91,7 +92,7 @@
         </fieldset>
 
         <div class="last">
-          <fieldset class="range__field">
+          <!-- <fieldset class="range__field">
             <div style="display: flex; ">
               <label>Select total of machines:</label>
               <span style="margin-left: 1rem;font-weight: 500;">{{ machines }} GB</span>
@@ -115,29 +116,24 @@
               <text class="range__point" x="63.5%" y="14" text-anchor="middle">10</text>
               <text class="range__point" x="99%" y="14" text-anchor="end">15</text>
             </svg>
-          </fieldset>
-          <fieldset class="range__field">
+          </fieldset> -->
+          <!-- <fieldset class="range__field">
             <div style="display: flex; ">
               <label>Select total IP:</label>
               <span style="margin-left: 1rem;font-weight: 500;">{{ ips }} GB</span>
-              <!-- <select v-model="ram" style="m">
-                  <option value="16" >16 GB</option>
-                </select> -->
             </div>
             <input class="range" type="range" min="1" max="5" value="1" step="1" v-model="ips" label="jjj">
             <svg role="presentation" width="100%" height="10" xmlns="http://www.w3.org/2000/svg">
               <rect class="range__tick" x="1%" y="3" width="1" height="10"></rect>
-              <!-- <rect class="range__tick" x="26%" y="3" width="1" height="10"></rect> -->
               <rect class="range__tick" x="50%" y="3" width="1" height="10"></rect>
               <rect class="range__tick" x="99%" y="3" width="1" height="10"></rect>
             </svg>
             <svg role="presentation" width="100%" height="14" xmlns="http://www.w3.org/2000/svg">
               <text class="range__point" x="1%" y="14" text-anchor="start">1</text>
-              <!-- <text class="range__point" x="26%" y="14" text-anchor="middle">3</text> -->
               <text class="range__point" x="50%" y="14" text-anchor="middle">3</text>
               <text class="range__point" x="99%" y="14" text-anchor="end">5</text>
             </svg>
-          </fieldset>
+          </fieldset> -->
         </div>
       </div>
 
@@ -148,7 +144,7 @@
           <div class="priceGigabyte">
             <span class="txt"> Service fee at</span>
             <span class="price">{{ priceFinal }} </span>
-            <span class="per">for {{ terabytes }} TB occupied in storage</span>
+            <span class="per">{{ terabytes }} TB in DRaaS NvME Storage</span>
             <button id="buttonrequest" class="d-block ml-auto w-100" type="submit" name="submit" value="Submit">
               Request a quote
             </button>
@@ -198,8 +194,8 @@ export default {
       ips: 1,
       months: 12,
       priceGigabyte: 30,
-      priceFinal: 0,
-      priceFinal2: 60.62,
+      priceFinal: 349.43,
+      priceFinal2: 29.11,
 
     }
   },
@@ -225,12 +221,14 @@ export default {
   },
   methods: {
     changed() {
-      const price =
-        (this.cpuCost * this.cpu) +
-        (this.ram * this.ramCost) +
-        (this.terabytes * this.terabytesCost) +
-        (this.machines * this.machinesCost) +
-        (this.ips * this.ipsCost)
+      const price = 
+        (this.terabytes * this.terabytesCost) 
+      // const price =
+      //   (this.cpuCost * this.cpu) +
+      //   (this.ram * this.ramCost) +
+      //   (this.terabytes * this.terabytesCost) +
+      //   (this.machines * this.machinesCost) +
+      //   (this.ips * this.ipsCost)
       this.priceFinal2 = this.truncateDecimals(price, 2)
       this.priceFinal = this.truncateDecimals(price * 12, 2)
     },
@@ -262,6 +260,8 @@ export default {
     position: sticky;
     top: 110px;
     align-self: flex-start;
+    text-align: justify;
+
 
     .baas_icon {
       display: flex;
@@ -270,6 +270,7 @@ export default {
 
       span {
         font-size: 3rem;
+        text-align: justify;
       }
 
       img {
@@ -522,7 +523,11 @@ export default {
 
 @media screen and (width <=850px) {
   .baas {
-
     position: static !important;
   }
-}</style>
+
+  .last {
+    flex-direction: column;
+  }
+}
+</style>
